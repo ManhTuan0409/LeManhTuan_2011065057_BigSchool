@@ -1,8 +1,10 @@
 ﻿@model LeManhTuan_2011065057_BigSchool.ViewModel.CourseViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Attending";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>Attending</h2>
 
 <div class="course">
     <ul>
@@ -38,37 +40,4 @@
             </li>
         }
     </ul>
-@section scripts
-{
-        <script>
-            $(document).ready(function () {
-                $(".js-toggle-attendance").click(function (e) {
-                    var button = $(e.target);
-                    $.post("/api/Attendances", { courseId: button.attr("data-course-id") })
-                        .done(function () {
-                            button
-                                .removeClass("btn-default")
-                                .addClass("btn-info")
-                                .text("Going");
-                        })
-                        .fail(function () {
-                            alert("Something failed!");
-                        });
-                });
-                $(".js-toggle-follow").click(function (e) {
-                    var button = $(e.target);
-                    $.post("/api/Followings", { followeeId: button.attr("data-user-id") })
-                        .done(function () {
-                            button.text("Following");
-                        })
-                        .fail(function () {
-                            alert("Something failed");
-                        });
-                });
-            });
-        </script>
-}
 </div>
-
-
-

@@ -9,6 +9,7 @@ namespace LeManhTuan_2011065057_BigSchool.ViewModel
 {
     public class CourseViewModel
     {
+        public int Id { get; set; }
         [Required]
         public string Place { get; set; }
         [Required]
@@ -24,5 +25,13 @@ namespace LeManhTuan_2011065057_BigSchool.ViewModel
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
         }
+        public IEnumerable<Course> UpCommingCourses { get; set; }
+        public bool ShowAction { get; set; }
+        public string Heading { get; set; }
+        public string Action
+        {
+            get { return (Id != 0) ? "Update" : "Create"; }
+        }
+
     }
 }
